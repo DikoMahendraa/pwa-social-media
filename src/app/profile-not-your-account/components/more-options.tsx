@@ -23,7 +23,7 @@ export const MoreOptions = ({
         </button>
 
         <button
-          onClick={() => onClick("archive")}
+          onClick={() => onClick("copy")}
           className="flex items-center gap-2 w-full p-4 font-medium text-black text-sm border-[#f0f0f0] rounded-2xl border"
         >
           <Image alt="icon" width={24} height={24} src="/icons/copy.svg" />

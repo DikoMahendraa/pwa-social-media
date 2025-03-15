@@ -13,6 +13,7 @@ import { MoreOptions } from "./components/more-options";
 import { SubscriptionContent } from "./components/subscribe";
 import ReportUser from "./components/report-user";
 import PopupInfoStatus from "@/components/molecules/popup-info-status";
+import { useToast } from "@/components/molecules/toast";
 
 export default function Page() {
   const profile: UserProfile = profileData;
@@ -24,6 +25,7 @@ export default function Page() {
     reportSuccess: false,
   });
   const [isBottomSheetSubscribe, setIsBottomSheetSubscribe] = useState(false);
+  const { addToast } = useToast();
 
   const tabs = [
     { id: "collections", label: "Collections" },
@@ -37,6 +39,12 @@ export default function Page() {
         report: true,
         option: false,
       }));
+    } else if (type === "copy") {
+      setIsBottomSheetOpen((prev) => ({
+        ...prev,
+        option: false,
+      }));
+      addToast("Link copied!", "success", 3000, "top-full");
     }
   };
 
