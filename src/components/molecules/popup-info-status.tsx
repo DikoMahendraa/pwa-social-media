@@ -29,12 +29,7 @@ export default function PopupInfoStatus({
       <div className="text-center">
         {icon && (
           <div className="flex justify-center">
-            <Image
-              alt="icon-success"
-              src={`/icons/status/${icon}`}
-              width={56}
-              height={56}
-            />
+            <Image alt="icon-success" src={icon} width={56} height={56} />
           </div>
         )}
         {title && (
@@ -42,7 +37,7 @@ export default function PopupInfoStatus({
         )}
 
         {description && (
-          <p className="text-[13px] px-14 text-[#858585]">
+          <p className="text-[13px] px-10 text-[#858585]">
             {parseHtml(String(description))}
           </p>
         )}

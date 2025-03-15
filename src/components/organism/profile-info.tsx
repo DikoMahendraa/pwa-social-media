@@ -7,10 +7,11 @@ import { useSubscriptionStore } from "@/store/subscription";
 
 interface ProfileInfoProps {
   profile: UserProfile;
+  isMe?: boolean;
   onSubscribe: () => void;
 }
 
-export function ProfileInfo({ profile, onSubscribe }: ProfileInfoProps) {
+export function ProfileInfo({ isMe, profile, onSubscribe }: ProfileInfoProps) {
   const { isSubscribed } = useSubscriptionStore();
   return (
     <div className="p-4">
@@ -41,7 +42,11 @@ export function ProfileInfo({ profile, onSubscribe }: ProfileInfoProps) {
         />
       </div>
 
-      <ProfileActions isSubscribed={isSubscribed} onSubscribe={onSubscribe} />
+      <ProfileActions
+        isMe={isMe}
+        isSubscribed={isSubscribed}
+        onSubscribe={onSubscribe}
+      />
     </div>
   );
 }

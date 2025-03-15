@@ -11,6 +11,10 @@ export interface UserTag {
 export interface Post {
   id: string;
   title: string;
+  logo?: string;
+  visible?: boolean;
+  description?: string;
+  logoAlias?: string;
   photos: Photo[];
   userTags: UserTag[];
   price?: number;
