@@ -1,0 +1,25 @@
+"use client";
+
+import { Search, Plus } from "lucide-react";
+import { BottomNavigationItem } from "../molecules/bottom-navigation-item";
+
+interface BottomNavigationProps {
+  profileImage: string;
+}
+
+export function BottomNavigation({ profileImage }: BottomNavigationProps) {
+  return (
+    <>
+      <div className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white flex justify-between p-4">
+        <BottomNavigationItem icon={Search} />
+        <BottomNavigationItem icon={Plus} />
+        <BottomNavigationItem profileImage={profileImage} />
+      </div>
+
+      {/* Bottom indicator line */}
+      <div className="fixed bottom-0 left-0 right-0 max-w-md mx-auto">
+        <div className="w-1/4 h-1 bg-black mx-auto rounded-t-full"></div>
+      </div>
+    </>
+  );
+}
