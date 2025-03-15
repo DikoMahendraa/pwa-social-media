@@ -10,7 +10,7 @@ import { BottomNavigation } from "@/components/organism/bottom-navigation";
 import { BottomSheet } from "@/components/molecules/bottom-sheet";
 import { profileData } from "@/data/profile-data";
 import { MoreOptions } from "./components/more-options";
-import { SubscriptionContent } from "./components/subscribtion";
+import { SubscriptionContent } from "./components/subscribe";
 
 export default function Page() {
   const profile: UserProfile = profileData;

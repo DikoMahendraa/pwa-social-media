@@ -12,7 +12,7 @@ export default function Checkbox({
   return (
     <button
       onClick={() => setChecked?.(!checked)}
-      className={`w-6 h-6 flex items-center rounded-sm justify-center border-black 
+      className={`w-6 h-6 flex border border-2 items-center rounded-sm justify-center border-black 
         ${checked ? "bg-black text-white" : "bg-white text-black"} transition`}
     >
       {checked && <Check size={16} />}
