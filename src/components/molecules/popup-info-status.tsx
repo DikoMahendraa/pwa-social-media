@@ -40,19 +40,18 @@ export default function PopupInfoStatus({
         {title && (
           <p className="text-black text-xl font-semibold mt-3 mb-1">{title}</p>
         )}
-        <div className="px-20">
-          {description && (
-            <p className="text-[13px] text-[#858585]">
-              {parseHtml(String(description))}
-            </p>
-          )}
 
-          {descriptionSecondary && (
-            <p className="text-[13px] text-[#858585] mt-1">
-              {descriptionSecondary}
-            </p>
-          )}
-        </div>
+        {description && (
+          <p className="text-[13px] px-14 text-[#858585]">
+            {parseHtml(String(description))}
+          </p>
+        )}
+
+        {descriptionSecondary && (
+          <p className="text-[13px] px-20 text-[#858585] mt-1">
+            {descriptionSecondary}
+          </p>
+        )}
       </div>
       <div className="px-4 w-full pt-6 pb-8">
         {buttonText && (

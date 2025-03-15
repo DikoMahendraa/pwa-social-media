@@ -5,7 +5,7 @@ import { PrimaryButton } from "@/components/atoms/primary-button";
 import { useSubscriptionStore } from "@/store/subscription";
 import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
 interface SubscriptionOption {
   id: string;
@@ -18,6 +18,10 @@ interface SubscriptionOption {
 
 interface SubscriptionSheetProps {
   onClose: () => void;
+  onClick: () => void;
+  isSubscribed?: boolean;
+  btnText?: string;
+  title?: string;
 }
 
 const subscriptionOptions: SubscriptionOption[] = [
@@ -56,27 +60,35 @@ const subscriptionOptions: SubscriptionOption[] = [
   },
 ];
 
-export const SubscriptionContent = ({ onClose }: SubscriptionSheetProps) => {
-  const { setSubscription, selectPlan, selectedPlan } = useSubscriptionStore();
+export const SubscriptionContent = ({
+  onClose,
+  onClick,
+  isSubscribed = false,
+  btnText,
+  title,
+}: SubscriptionSheetProps) => {
+  const { selectPlan, selectedPlan } = useSubscriptionStore();
+  const [temporaryPlan, setTemporaryPlan] = useState("");
 
   const onSelectPlan = (option: SubscriptionOption) => {
-    selectPlan(option.id);
+    if (isSubscribed) {
+      setTemporaryPlan(option.id);
+    } else {
+      selectPlan(option.id);
+    }
   };
 
   return (
     <section className="bg-white rounded-t-2xl relative pt-2 max-w-md mx-auto w-full shadow-lg">
       <div className="flex items-center py-2 mb-3">
         <button
-          onClick={() => {
-            onClose();
-            selectPlan("");
-          }}
+          onClick={onClose}
           className="absolute rounded-full p-2 hover:bg-gray-100"
         >
           <ArrowLeft className="size-6" />
         </button>
         <h2 className="ml-4 flex-1 text-center text-xl font-semibold">
-          Select subscription
+          {title}
         </h2>
       </div>
 
@@ -89,7 +101,13 @@ export const SubscriptionContent = ({ onClose }: SubscriptionSheetProps) => {
           >
             <div className="flex items-center justify-between mb-3">
               {option.icon}
-              <Checkbox checked={Boolean(selectedPlan === option.id)} />
+              {isSubscribed && selectedPlan === option.id ? (
+                <span className="text-xs py-[6px] px-2 rounded-full bg-[#ebebeb] text-black">
+                  Current subscription
+                </span>
+              ) : (
+                <Checkbox checked={Boolean(temporaryPlan === option.id)} />
+              )}
             </div>
             <div className="flex items-center justify-between">
               <span className="font-semibold text-sm text-black">
@@ -114,11 +132,11 @@ export const SubscriptionContent = ({ onClose }: SubscriptionSheetProps) => {
           fullWidth
           className="w-full"
           onClick={() => {
-            setSubscription(true);
-            onClose();
+            onClick();
+            selectPlan(temporaryPlan);
           }}
         >
-          Subscribe
+          {btnText}
         </PrimaryButton>
       </div>
     </section>
