@@ -74,6 +74,7 @@ export const SubscriptionContent = ({
     if (isSubscribed) {
       setTemporaryPlan(option.id);
     } else {
+      setTemporaryPlan(option.id);
       selectPlan(option.id);
     }
   };

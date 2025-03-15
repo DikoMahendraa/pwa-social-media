@@ -15,7 +15,7 @@ export function IconButton({
   ...props
 }: IconButtonProps) {
   return (
-    <button className={`p-1 ${className}`} {...props}>
+    <button className={`p-1 cursor-pointer ${className}`} {...props}>
       <Icon size={size} />
     </button>
   );
