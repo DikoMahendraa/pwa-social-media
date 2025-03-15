@@ -6,17 +6,20 @@ interface ProfileStatsProps {
   postCount: number;
   followerCount: number;
   followingCount: number;
+  onViewFollowers?: () => void;
 }
 
 export function ProfileStats({
   postCount,
   followerCount,
   followingCount,
+  onViewFollowers,
 }: ProfileStatsProps) {
   return (
     <div className="flex flex-1 justify-between">
       <StatCounter value={postCount} label="Collections" />
       <StatCounter
+        onClick={onViewFollowers}
         value={formatNumber(followerCount)}
         label="Followers"
         icon={

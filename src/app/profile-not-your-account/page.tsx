@@ -30,6 +30,7 @@ export default function Page() {
     unsubcribedSuccess: false,
     changePlanSubscription: false,
     changePlanSuccess: false,
+    viewFollowers: false,
   });
   const [isBottomSheetSubscribe, setIsBottomSheetSubscribe] = useState(false);
   const { addToast } = useToast();
@@ -92,6 +93,13 @@ export default function Page() {
     }
   };
 
+  const onViewFollowers = () => {
+    setIsBottomSheetOpen((prev) => ({
+      ...prev,
+      viewFollowers: true,
+    }));
+  };
+
   return (
     <div className="max-w-md mx-auto bg-white min-h-screen flex flex-col">
       <ProfileHeader
@@ -102,7 +110,11 @@ export default function Page() {
       />
 
       <div className="flex-1 overflow-auto hide-scrollbar mb-24">
-        <ProfileInfo onSubscribe={onSubcribed} profile={profile} />
+        <ProfileInfo
+          onViewFollowers={!isSubscribed ? onViewFollowers : () => ({})}
+          onSubscribe={onSubcribed}
+          profile={profile}
+        />
         <TabNavigation tabs={tabs} defaultActiveTab="collections" />
         <PostsGrid posts={profile.posts} />
       </div>
@@ -301,6 +313,38 @@ export default function Page() {
             setIsBottomSheetOpen((prev) => ({
               ...prev,
               changePlanSuccess: false,
+            }));
+          }}
+        />
+      </BottomSheet>
+
+      {/* Section - View Followers*/}
+      <BottomSheet
+        isOpen={isBottomSheetOpen.viewFollowers}
+        onClose={() =>
+          setIsBottomSheetOpen((prev) => ({
+            ...prev,
+            viewFollowers: false,
+          }))
+        }
+      >
+        <PopupInfoStatus
+          buttonText="Close"
+          buttonTextThird="Subscribe"
+          icon="/icons/status/subscribe-blue.svg"
+          title="Upgrade subscription"
+          description="Upgrade to a paid subscription to see who they follow."
+          onClick={() => {
+            setIsBottomSheetOpen((prev) => ({
+              ...prev,
+              viewFollowers: false,
+            }));
+          }}
+          onClickThird={() => {
+            setIsBottomSheetSubscribe(true);
+            setIsBottomSheetOpen((prev) => ({
+              ...prev,
+              viewFollowers: false,
             }));
           }}
         />

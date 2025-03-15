@@ -27,7 +27,6 @@ export function ProfileActions({
   return (
     <div className="flex gap-2">
       <Button
-        fullWidth
         onClick={onSubscribe}
         className="w-full flex gap-2 items-center justify-center border-black py-3.5 border-[1.5px] font-medium text-sm mt-4"
       >

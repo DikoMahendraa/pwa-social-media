@@ -9,9 +9,15 @@ interface ProfileInfoProps {
   profile: UserProfile;
   isMe?: boolean;
   onSubscribe: () => void;
+  onViewFollowers?: () => void;
 }
 
-export function ProfileInfo({ isMe, profile, onSubscribe }: ProfileInfoProps) {
+export function ProfileInfo({
+  isMe,
+  profile,
+  onSubscribe,
+  onViewFollowers,
+}: ProfileInfoProps) {
   const { isSubscribed } = useSubscriptionStore();
   return (
     <div className="p-4">
@@ -27,6 +33,7 @@ export function ProfileInfo({ isMe, profile, onSubscribe }: ProfileInfoProps) {
           </div>
         </div>
         <ProfileStats
+          onViewFollowers={onViewFollowers}
           postCount={profile.postCount ?? 0}
           followerCount={profile.followerCount}
           followingCount={profile.followingCount}

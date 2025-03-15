@@ -4,25 +4,30 @@ import React from "react";
 import { SecondaryButton } from "@/components/atoms/secondary-button";
 import Image from "next/image";
 import { parseHtml } from "@/helper/htmlParser";
+import { PrimaryButton } from "../atoms/primary-button";
 
 export default function PopupInfoStatus({
   onClick,
   onClickSecondary,
+  onClickThird,
   icon,
   title,
   description,
   descriptionSecondary,
   buttonText,
   buttonTextSecondary,
+  buttonTextThird,
 }: {
   onClick?: () => void;
   onClickSecondary?: () => void;
+  onClickThird?: () => void;
   icon: string;
   title: string;
   description: string | React.ReactNode;
   descriptionSecondary?: string;
   buttonText: string;
   buttonTextSecondary?: string;
+  buttonTextThird?: string;
 }) {
   return (
     <section className="bg-white rounded-t-2xl pt-8 max-w-md mx-auto w-full shadow-lg">
@@ -64,6 +69,14 @@ export default function PopupInfoStatus({
           >
             {buttonTextSecondary}
           </SecondaryButton>
+        )}
+        {buttonTextThird && (
+          <PrimaryButton
+            onClick={onClickThird}
+            className="w-full text-white py-3.5 border-[1.5px] font-medium text-sm mt-2"
+          >
+            {buttonTextThird}
+          </PrimaryButton>
         )}
       </div>
     </section>
