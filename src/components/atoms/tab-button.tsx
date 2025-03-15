@@ -14,7 +14,7 @@ export function TabButton({
 }: TabButtonProps) {
   return (
     <button
-      className={`flex-1 py-3 text-sm ${
+      className={`flex-1 cursor-pointer py-3 text-sm ${
         active ? "font-medium border-b-2 border-black" : "text-[#858585]"
       } ${className}`}
       {...props}

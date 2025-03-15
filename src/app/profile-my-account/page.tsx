@@ -9,11 +9,16 @@ import { PostsGrid } from "@/components/organism/posts-grid";
 import { BottomNavigation } from "@/components/organism/bottom-navigation";
 import { BottomSheet } from "@/components/molecules/bottom-sheet";
 import { profileData } from "@/data/profile-data";
-import { profileDataPrivate } from "@/data/profile-data-private";
 import { MoreOptions } from "./components/more-options";
 import { useToast } from "@/components/molecules/toast";
 import { PostsPrivateGrid } from "@/components/organism/post-private-grid";
 import PopupInfoStatus from "@/components/molecules/popup-info-status";
+import { profileDataPrivate } from "@/data/profile-data-private";
+
+const tabs = [
+  { id: "collections", label: "Collections" },
+  { id: "activity", label: "Activity" },
+];
 
 export default function Page() {
   const profile: UserProfile = profileData;
@@ -25,11 +30,6 @@ export default function Page() {
     detail: false,
   });
   const { addToast } = useToast();
-
-  const tabs = [
-    { id: "collections", label: "Collections" },
-    { id: "activity", label: "Activity" },
-  ];
 
   const onMoreOptionMenu = (type: string) => {
     if (type === "report") {
@@ -72,7 +72,7 @@ export default function Page() {
       <div className="flex-1 overflow-auto hide-scrollbar mb-24">
         <ProfileInfo isMe onSubscribe={onEdit} profile={profile} />
         <TabNavigation tabs={tabs} defaultActiveTab="collections" />
-        <PostsGrid posts={profile.posts} />
+        <PostsGrid isMe posts={profile.posts} />
         <div className="my-3 mb">
           <p className="text-black text-base font-semibold">
             Private and saved collections

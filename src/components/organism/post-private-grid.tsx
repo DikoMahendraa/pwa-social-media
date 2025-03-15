@@ -9,10 +9,10 @@ interface PostsPrivateGridProps {
 export function PostsPrivateGrid({ posts, onClick }: PostsPrivateGridProps) {
   return (
     <div className="grid grid-cols-2 gap-1 p-1">
-      {posts?.map((post: Post) => (
+      {posts?.map((post: Post, index) => (
         <PostPrivateCard
           onClick={() => onClick(post)}
-          key={post.id}
+          key={index}
           post={post}
         />
       ))}

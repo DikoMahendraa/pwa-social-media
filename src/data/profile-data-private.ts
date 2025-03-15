@@ -14,7 +14,7 @@ export const profileDataPrivate: UserProfile = {
   posts: [
     {
       id: "post1",
-      title: "sporty and rich",
+      title: "Minimalist workspace",
       photos: [
         {
           id: "photo1",
@@ -25,14 +25,11 @@ export const profileDataPrivate: UserProfile = {
         { id: "user1", username: "minimaldesign" },
         { id: "user2", username: "workspacesetup" },
       ],
-      visible: false,
-      description: "This collection was created by @username.",
-      logo: "/icons/status/sporty.svg",
-      logoAlias: "/icons/status/sporty.svg",
+      price: 149,
     },
     {
       id: "post2",
-      title: "secret things",
+      title: "Ceramic collection",
       photos: [
         {
           id: "photo2",
@@ -43,14 +40,11 @@ export const profileDataPrivate: UserProfile = {
         { id: "user3", username: "ceramics" },
         { id: "user4", username: "handmade" },
       ],
-      visible: true,
-      description: "This collection is only visible to you.",
-      logo: "/icons/status/close-eyes.svg",
-      logoAlias: "/icons/status/secret.svg",
+      price: 89,
     },
     {
       id: "post3",
-      title: "secret things",
+      title: "Morning coffee ritual",
       photos: [
         {
           id: "photo3",
@@ -58,14 +52,11 @@ export const profileDataPrivate: UserProfile = {
         },
       ],
       userTags: [{ id: "user5", username: "coffeelovers" }],
-      visible: true,
-      description: "This collection is only visible to you.",
-      logo: "/icons/status/close-eyes.svg",
-      logoAlias: "/icons/status/secret.svg",
+      price: 0,
     },
     {
       id: "post4",
-      title: "sporty and rich",
+      title: "Sustainable kitchen",
       photos: [
         {
           id: "photo4",
@@ -76,14 +67,11 @@ export const profileDataPrivate: UserProfile = {
         { id: "user6", username: "sustainable" },
         { id: "user7", username: "ecofriendly" },
       ],
-      visible: false,
-      description: "This collection was created by @username.",
-      logo: "/icons/status/sporty.svg",
-      logoAlias: "/icons/status/sporty.svg",
+      price: 199,
     },
     {
       id: "post5",
-      title: "sporty and rich",
+      title: "Weekend getaway",
       photos: [
         {
           id: "photo5",
@@ -94,14 +82,11 @@ export const profileDataPrivate: UserProfile = {
         { id: "user8", username: "travel" },
         { id: "user9", username: "weekendvibes" },
       ],
-      visible: false,
-      description: "This collection was created by @username.",
-      logo: "/icons/status/sporty.svg",
-      logoAlias: "/icons/status/sporty.svg",
+      price: 0,
     },
     {
       id: "post6",
-      title: "my complete wardrobe",
+      title: "Home office redesign",
       photos: [
         {
           id: "photo6",
@@ -112,11 +97,7 @@ export const profileDataPrivate: UserProfile = {
         { id: "user10", username: "homeoffice" },
         { id: "user11", username: "productivity" },
       ],
-      visible: false,
-      description:
-        "This collection is only available to your paid subscribers.",
-      logo: "/icons/status/dollar.svg",
-      logoAlias: "/icons/status/wardrobe.svg",
+      price: 299,
     },
   ],
 };

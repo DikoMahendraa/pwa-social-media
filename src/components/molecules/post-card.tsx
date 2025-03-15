@@ -5,9 +5,10 @@ import { Badge } from "../atoms/badge";
 
 interface PostCardProps {
   post: Post;
+  isMe?: boolean;
 }
 
-export function PostCard({ post }: PostCardProps) {
+export function PostCard({ post, isMe }: PostCardProps) {
   const hasPrice = post?.price && post?.price > 0;
   return (
     <div className="relative max-h-[173px] h-full rounded-2xl overflow-hidden bg-gray-100">
@@ -16,7 +17,9 @@ export function PostCard({ post }: PostCardProps) {
         alt="Post image"
         width={1000}
         height={1000}
-        className={`w-full h-[173px] object-cover ${hasPrice && "blur-md"}`}
+        className={`w-full h-[173px] object-cover ${
+          !isMe && hasPrice && "blur-md"
+        }`}
       />
       <div className="absolute top-2 right-2 left-2 gap-2 flex justify-between">
         <div className="flex gap-2 items-center">

@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { TabButton } from "../atoms/tab-button";
 
 interface Tab {
   id: string;
   label: string;
+  content?: React.ReactNode;
 }
 
 interface TabNavigationProps {
@@ -29,16 +30,22 @@ export function TabNavigation({
   };
 
   return (
-    <div className="flex border-b border-b-[#e6e6e6] mb-4">
-      {tabs.map((tab) => (
-        <TabButton
-          key={tab.id}
-          active={activeTab === tab.id}
-          onClick={() => handleTabClick(tab.id)}
-        >
-          {tab.label}
-        </TabButton>
-      ))}
+    <div>
+      <div className="flex border-b border-b-[#e6e6e6] mb-4">
+        {tabs.map((tab) => (
+          <TabButton
+            key={tab.id}
+            active={activeTab === tab.id}
+            onClick={() => handleTabClick(tab.id)}
+          >
+            {tab.label}
+          </TabButton>
+        ))}
+      </div>
+
+      <div className="mt-4">
+        {tabs.find((tab) => tab.id === activeTab)?.content}
+      </div>
     </div>
   );
 }
