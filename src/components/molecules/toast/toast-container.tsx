@@ -23,14 +23,14 @@ export function ToastContainer({
     "bottom-left": "bottom-4 left-4",
     "bottom-center": "bottom-4 left-1/2 -translate-x-1/2",
     "bottom-right": "bottom-4 right-4",
-    "top-full": "top-0 right-0 left-0",
+    "top-full": "top-0 left-1/2 -translate-x-1/2 w-[min(28rem,100%)] max-w-md",
   };
 
   const isTop = position.startsWith("top");
 
   return (
     <motion.div
-      className={`fixed z-50 flex flex-col gap-2 ${positionClasses[position]}`}
+      className={`fixed z-50 flex flex-col max-w-md gap-2 ${positionClasses[position]}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

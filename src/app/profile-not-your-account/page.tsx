@@ -168,7 +168,7 @@ export default function Page() {
       >
         <PopupInfoStatus
           buttonText="Close"
-          icon="success-blue.svg"
+          icon="/icons/status/success-blue.svg"
           title="Your report has been sent"
           description="Thank you!"
           onClick={() =>
@@ -203,7 +203,7 @@ export default function Page() {
         <PopupInfoStatus
           buttonText="Close"
           buttonTextSecondary="Confirm cancellation"
-          icon="warning-red.svg"
+          icon="/icons/status/warning-red.svg"
           title="Confirm cancellation?"
           description="If you cancel, you’ll no longer have full access to molly_j’s profile"
           descriptionSecondary="Any saved collections from this user will be removed from your profile"
@@ -236,7 +236,7 @@ export default function Page() {
       >
         <PopupInfoStatus
           buttonText="Close"
-          icon="success-blue.svg"
+          icon="/icons/status/success-blue.svg"
           title="Your subscription has been cancelled"
           description={`Your full access to molly_j will expire on <strong>19 October 2025</strong>.`}
           onClick={() => {
@@ -260,9 +260,9 @@ export default function Page() {
       >
         <PopupInfoStatus
           buttonText="Close"
-          buttonTextSecondary="Confirm update?"
-          icon="warning-red.svg"
-          title="Confirm cancellation?"
+          title="Confirm update?"
+          buttonTextSecondary="Confirm update"
+          icon="/icons/status/warning-red.svg"
           description="If you update your subscription, you’ll no longer have full access to molly_j’s profile"
           descriptionSecondary="Any saved collections from this user will be removed from your profile"
           onClickSecondary={() => {
@@ -294,7 +294,7 @@ export default function Page() {
       >
         <PopupInfoStatus
           buttonText="Close"
-          icon="success-blue.svg"
+          icon="/icons/status/success-blue.svg"
           title="Your subscription has been updated"
           description={`You have changed to a free subscription. Your full access to molly_j will expire on <strong>19 October 2025</strong>.`}
           onClick={() => {
