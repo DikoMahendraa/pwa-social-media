@@ -12,7 +12,7 @@ export function SecondaryButton({
 }: SecondaryButtonProps) {
   return (
     <button
-      className={`border rounded-[12px] flex items-center justify-center ${className}`}
+      className={`border cursor-pointer rounded-[12px] flex items-center justify-center ${className}`}
       {...props}
     >
       {children}
