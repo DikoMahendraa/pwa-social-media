@@ -37,9 +37,9 @@ export default function PopupInfoStatus({
         )}
 
         {description && (
-          <p className="text-[13px] px-10 text-[#858585]">
+          <div className="text-[13px] px-10 text-[#858585]">
             {parseHtml(String(description))}
-          </p>
+          </div>
         )}
 
         {descriptionSecondary && (

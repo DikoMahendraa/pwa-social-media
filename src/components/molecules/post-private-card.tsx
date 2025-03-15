@@ -16,13 +16,14 @@ export function PostPrivateCard({ post, onClick }: PostCardProps) {
       onClick={onClick}
       className="relative max-h-[173px] h-full cursor-pointer rounded-2xl overflow-hidden bg-gray-100"
     >
-      <Image
-        src={post?.photos?.[0]?.url || "/placeholder.svg"}
-        alt="Post image"
-        width={1000}
-        height={1000}
-        className={`w-full h-[173px] object-cover`}
-      />
+      <div className="relative w-full aspect-[4/3] bg-gray-200 overflow-hidden rounded-lg">
+        <Image
+          src={post?.photos?.[0]?.url || "/placeholder.svg"}
+          alt="Post image"
+          fill
+          className={`w-full h-full object-cover`}
+        />
+      </div>
       <div className="absolute top-2 right-2 left-2 gap-2 flex justify-between">
         <div className="flex gap-2 items-center">
           <Badge
