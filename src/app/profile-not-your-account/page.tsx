@@ -26,10 +26,12 @@ export default function Page() {
     option: false,
     reportSuccess: false,
     subcribed: false,
+    confirmationUnsubscribed: false,
+    unsubcribedSuccess: false,
   });
   const [isBottomSheetSubscribe, setIsBottomSheetSubscribe] = useState(false);
   const { addToast } = useToast();
-  const { isSubscribed } = useSubscriptionStore();
+  const { isSubscribed, setSubscription } = useSubscriptionStore();
 
   const tabs = [
     { id: "collections", label: "Collections" },
@@ -66,6 +68,12 @@ export default function Page() {
     if (type === "change-subscription") {
       setIsBottomSheetSubscribe(true);
       setIsBottomSheetOpen((prev) => ({ ...prev, subcribed: false }));
+    } else if (type === "unsubcribe") {
+      setIsBottomSheetOpen((prev) => ({
+        ...prev,
+        confirmationUnsubscribed: true,
+        subcribed: false,
+      }));
     }
   };
 
@@ -86,6 +94,7 @@ export default function Page() {
 
       <BottomNavigation profileImage={profile.avatar} />
 
+      {/* Section - Option Menu */}
       <BottomSheet
         isOpen={isBottomSheetOpen.option}
         onClose={() =>
@@ -100,6 +109,7 @@ export default function Page() {
         />
       </BottomSheet>
 
+      {/* Section - Subscribe Menu */}
       <BottomSheet
         isOpen={isBottomSheetSubscribe}
         onClose={() => setIsBottomSheetSubscribe(false)}
@@ -107,6 +117,7 @@ export default function Page() {
         <SubscriptionContent onClose={() => setIsBottomSheetSubscribe(false)} />
       </BottomSheet>
 
+      {/* Section - Report */}
       <BottomSheet
         isOpen={isBottomSheetOpen.report}
         onClose={() =>
@@ -127,6 +138,7 @@ export default function Page() {
         />
       </BottomSheet>
 
+      {/* Section - Report Success */}
       <BottomSheet
         isOpen={isBottomSheetOpen.reportSuccess}
         onClose={() =>
@@ -138,12 +150,13 @@ export default function Page() {
           icon="success-blue.svg"
           title="Your report has been sent"
           description="Thank you!"
-          onClose={() =>
+          onClick={() =>
             setIsBottomSheetOpen((prev) => ({ ...prev, reportSuccess: false }))
           }
         />
       </BottomSheet>
 
+      {/* Section - Subcribed */}
       <BottomSheet
         isOpen={isBottomSheetOpen.subcribed}
         onClose={() =>
@@ -153,6 +166,64 @@ export default function Page() {
         <SubscribedOption
           onClick={(type: string) => onSubscribedMenuOption(type)}
           onClose={() => ({})}
+        />
+      </BottomSheet>
+
+      {/* Section - Confirmation Unsubscribed */}
+      <BottomSheet
+        isOpen={isBottomSheetOpen.confirmationUnsubscribed}
+        onClose={() =>
+          setIsBottomSheetOpen((prev) => ({
+            ...prev,
+            confirmationUnsubscribed: false,
+          }))
+        }
+      >
+        <PopupInfoStatus
+          buttonText="Close"
+          buttonTextSecondary="Confirm cancellation"
+          icon="warning-red.svg"
+          title="Confirm cancellation?"
+          description="If you cancel, you’ll no longer have full access to molly_j’s profile"
+          descriptionSecondary="Any saved collections from this user will be removed from your profile"
+          onClickSecondary={() => {
+            setSubscription(false);
+            setIsBottomSheetOpen((prev) => ({
+              ...prev,
+              confirmationUnsubscribed: false,
+              unsubcribedSuccess: true,
+            }));
+          }}
+          onClick={() =>
+            setIsBottomSheetOpen((prev) => ({
+              ...prev,
+              confirmationUnsubscribed: false,
+            }))
+          }
+        />
+      </BottomSheet>
+
+      {/* Section - Unsubscribed Success*/}
+      <BottomSheet
+        isOpen={isBottomSheetOpen.unsubcribedSuccess}
+        onClose={() =>
+          setIsBottomSheetOpen((prev) => ({
+            ...prev,
+            unsubcribedSuccess: false,
+          }))
+        }
+      >
+        <PopupInfoStatus
+          buttonText="Close"
+          icon="success-blue.svg"
+          title="Your subscription has been cancelled"
+          description={`Your full access to molly_j will expire on <strong>19 October 2025</strong>.`}
+          onClick={() => {
+            setIsBottomSheetOpen((prev) => ({
+              ...prev,
+              unsubcribedSuccess: false,
+            }));
+          }}
         />
       </BottomSheet>
     </div>

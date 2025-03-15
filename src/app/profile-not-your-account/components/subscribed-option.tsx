@@ -14,7 +14,7 @@ export default function SubscribedOption({
       <div className="space-y-2">
         <button
           onClick={() => onClick("change-subscription")}
-          className="flex items-center w-full p-4 gap-2 font-medium text-black text-sm border-[#f0f0f0] rounded-2xl border"
+          className="flex items-center cursor-pointer w-full p-4 gap-2 font-medium text-black text-sm border-[#f0f0f0] rounded-2xl border"
         >
           <Image alt="icon" width={24} height={24} src="/icons/pencil.svg" />
           <span>Change subscription</span>
@@ -22,7 +22,7 @@ export default function SubscribedOption({
 
         <button
           onClick={() => onClick("payment-method")}
-          className="flex items-center gap-2 w-full p-4 font-medium text-black text-sm border-[#f0f0f0] rounded-2xl border"
+          className="flex items-center cursor-pointer gap-2 w-full p-4 font-medium text-black text-sm border-[#f0f0f0] rounded-2xl border"
         >
           <Image alt="icon" width={24} height={24} src="/icons/debit.svg" />
           <span>Edit payment method</span>
@@ -30,7 +30,7 @@ export default function SubscribedOption({
 
         <button
           onClick={() => onClick("unsubcribe")}
-          className="flex items-center gap-2 w-full p-4 border font-medium text-black text-sm border-[#f0f0f0] rounded-2xl"
+          className="flex items-center cursor-pointer gap-2 w-full p-4 border font-medium text-black text-sm border-[#f0f0f0] rounded-2xl"
         >
           <Image alt="icon" width={24} height={24} src="/icons/x.svg" />
           <span>Unsubscribe</span>

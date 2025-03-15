@@ -3,42 +3,74 @@
 import React from "react";
 import { SecondaryButton } from "@/components/atoms/secondary-button";
 import Image from "next/image";
+import { parseHtml } from "@/helper/htmlParser";
 
 export default function PopupInfoStatus({
-  onClose,
+  onClick,
+  onClickSecondary,
   icon,
   title,
   description,
+  descriptionSecondary,
   buttonText,
+  buttonTextSecondary,
 }: {
-  onClose?: () => void;
+  onClick?: () => void;
+  onClickSecondary?: () => void;
   icon: string;
   title: string;
-  description: string;
+  description: string | React.ReactNode;
+  descriptionSecondary?: string;
   buttonText: string;
+  buttonTextSecondary?: string;
 }) {
   return (
     <section className="bg-white rounded-t-2xl pt-8 max-w-md mx-auto w-full shadow-lg">
       <div className="text-center">
-        <div className="flex justify-center">
-          <Image
-            alt="icon-success"
-            src={`/icons/status/${icon}`}
-            width={56}
-            height={56}
-          />
-        </div>
+        {icon && (
+          <div className="flex justify-center">
+            <Image
+              alt="icon-success"
+              src={`/icons/status/${icon}`}
+              width={56}
+              height={56}
+            />
+          </div>
+        )}
+        {title && (
+          <p className="text-black text-xl font-semibold mt-3 mb-1">{title}</p>
+        )}
+        <div className="px-20">
+          {description && (
+            <p className="text-[13px] text-[#858585]">
+              {parseHtml(String(description))}
+            </p>
+          )}
 
-        <p className="text-black text-xl font-semibold mt-3 mb-1">{title}</p>
-        <p className="text-[13px] text-[#858585]">{description}</p>
+          {descriptionSecondary && (
+            <p className="text-[13px] text-[#858585] mt-1">
+              {descriptionSecondary}
+            </p>
+          )}
+        </div>
       </div>
       <div className="px-4 w-full pt-6 pb-8">
-        <SecondaryButton
-          onClick={onClose}
-          className="w-full border-black py-3.5 border-[1.5px] font-medium text-sm mt-4"
-        >
-          {buttonText}
-        </SecondaryButton>
+        {buttonText && (
+          <SecondaryButton
+            onClick={onClick}
+            className="w-full border-black py-3.5 border-[1.5px] font-medium text-sm mt-4"
+          >
+            {buttonText}
+          </SecondaryButton>
+        )}
+        {buttonTextSecondary && (
+          <SecondaryButton
+            onClick={onClickSecondary}
+            className="w-full bg-[#D91818] text-white py-3.5 border-[1.5px] font-medium text-sm mt-2"
+          >
+            {buttonTextSecondary}
+          </SecondaryButton>
+        )}
       </div>
     </section>
   );
