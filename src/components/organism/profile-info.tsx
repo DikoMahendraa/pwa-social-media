@@ -3,12 +3,15 @@ import { ProfileAvatar } from "../atoms/profile-avatar";
 import { ProfileStats } from "../molecules/profile-stats";
 import { ProfileBio } from "../molecules/profile-bio";
 import { ProfileActions } from "../molecules/profile-actions";
+import { useSubscriptionStore } from "@/store/subscription";
 
 interface ProfileInfoProps {
   profile: UserProfile;
+  onSubscribe: () => void;
 }
 
-export function ProfileInfo({ profile }: ProfileInfoProps) {
+export function ProfileInfo({ profile, onSubscribe }: ProfileInfoProps) {
+  const { isSubscribed } = useSubscriptionStore();
   return (
     <div className="p-4">
       <div className="flex mb-4">
@@ -38,7 +41,7 @@ export function ProfileInfo({ profile }: ProfileInfoProps) {
         />
       </div>
 
-      <ProfileActions />
+      <ProfileActions isSubscribed={isSubscribed} onSubscribe={onSubscribe} />
     </div>
   );
 }

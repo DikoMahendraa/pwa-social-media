@@ -14,7 +14,7 @@ export function PrimaryButton({
 }: PrimaryButtonProps) {
   return (
     <button
-      className={`bg-black text-white text-sm rounded-[12px] py-3 px-4 font-medium ${
+      className={`bg-black cursor-pointer text-white text-sm rounded-[12px] py-3 px-4 font-medium ${
         fullWidth ? "flex-1" : ""
       } ${className}`}
       {...props}
