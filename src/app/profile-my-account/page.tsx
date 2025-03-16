@@ -73,7 +73,7 @@ export default function Page() {
         <ProfileInfo isMe onSubscribe={onEdit} profile={profile} />
         <TabNavigation tabs={tabs} defaultActiveTab="collections" />
         <PostsGrid isMe posts={profile.posts} />
-        <div className="my-3 mb">
+        <div className="my-3 mb px-2">
           <p className="text-black text-base font-semibold">
             Private and saved collections
           </p>

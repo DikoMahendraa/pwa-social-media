@@ -11,6 +11,7 @@ interface PostCardProps {
 }
 
 export function PostPrivateCard({ post, onClick }: PostCardProps) {
+  console.log("post?.logo", post?.logo);
   return (
     <div
       onClick={onClick}
