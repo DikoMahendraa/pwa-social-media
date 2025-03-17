@@ -14,6 +14,7 @@ import { useToast } from "@/components/molecules/toast";
 import { PostsPrivateGrid } from "@/components/organism/post-private-grid";
 import PopupInfoStatus from "@/components/molecules/popup-info-status";
 import { profileDataPrivate } from "@/data/profile-data-private";
+import EditProfile from "./components/edit-profile";
 
 const tabs = [
   { id: "collections", label: "Collections" },
@@ -28,6 +29,7 @@ export default function Page() {
     option: false,
     subcribed: false,
     detail: false,
+    editProfile: false,
   });
   const { addToast } = useToast();
 
@@ -48,7 +50,7 @@ export default function Page() {
   };
 
   const onEdit = () => {
-    setIsBottomSheetOpen((prev) => ({ ...prev, subcribed: false }));
+    setIsBottomSheetOpen((prev) => ({ ...prev, editProfile: true }));
   };
 
   const onViewDetail = (items: Post) => {
@@ -120,6 +122,16 @@ export default function Page() {
             setIsBottomSheetOpen((prev) => ({ ...prev, detail: false }))
           }
         />
+      </BottomSheet>
+
+      {/* Section - Edit Profile */}
+      <BottomSheet
+        isOpen={isBottomSheetOpen.editProfile}
+        onClose={() =>
+          setIsBottomSheetOpen((prev) => ({ ...prev, editProfile: false }))
+        }
+      >
+        <EditProfile />
       </BottomSheet>
     </div>
   );
