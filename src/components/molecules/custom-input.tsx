@@ -118,7 +118,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           {suffix && (
             <div
               className={classNames(
-                "flex items-center pl-2 pr-0",
+                "flex items-center pl-2 pr-2",
                 onSuffixClick && !disabled && "cursor-pointer"
               )}
               onClick={!disabled && onSuffixClick ? onSuffixClick : undefined}

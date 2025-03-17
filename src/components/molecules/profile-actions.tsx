@@ -1,8 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { PrimaryButton } from "../atoms/primary-button";
 import { SecondaryButton } from "../atoms/secondary-button";
-import { Pencil } from "lucide-react";
 
 export function ProfileActions({
   onSubscribe,
@@ -30,7 +30,14 @@ export function ProfileActions({
         onClick={onSubscribe}
         className="w-full flex gap-2 items-center justify-center border-black py-3.5 border-[1.5px] font-medium text-sm"
       >
-        {isMe && <Pencil size={18} />}
+        {isMe && (
+          <Image
+            alt="icon-image"
+            src="/icons/pencil-white.svg"
+            width={20}
+            height={20}
+          />
+        )}
         {buttonText}
       </Button>
     </div>

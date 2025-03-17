@@ -15,6 +15,7 @@ import { PostsPrivateGrid } from "@/components/organism/post-private-grid";
 import PopupInfoStatus from "@/components/molecules/popup-info-status";
 import { profileDataPrivate } from "@/data/profile-data-private";
 import EditProfile from "./components/edit-profile";
+import ChooseSource from "./components/choose-source";
 
 const tabs = [
   { id: "collections", label: "Collections" },
@@ -30,6 +31,7 @@ export default function Page() {
     subcribed: false,
     detail: false,
     editProfile: false,
+    chooseSource: false,
   });
   const { addToast } = useToast();
 
@@ -131,7 +133,43 @@ export default function Page() {
           setIsBottomSheetOpen((prev) => ({ ...prev, editProfile: false }))
         }
       >
-        <EditProfile />
+        <EditProfile
+          onClose={() =>
+            setIsBottomSheetOpen((prev) => ({
+              ...prev,
+              editProfile: false,
+            }))
+          }
+          onSave={() => {
+            addToast("Profile changes saved!", "success", 3000, "top-full");
+            setIsBottomSheetOpen((prev) => ({
+              ...prev,
+              editProfile: false,
+            }));
+          }}
+          onChooseFile={() =>
+            setIsBottomSheetOpen((prev) => ({
+              ...prev,
+              editProfile: false,
+              chooseSource: true,
+            }))
+          }
+        />
+      </BottomSheet>
+
+      {/* Section - Choose Source File */}
+      <BottomSheet
+        isOpen={isBottomSheetOpen.chooseSource}
+        onClose={() =>
+          setIsBottomSheetOpen((prev) => ({ ...prev, chooseSource: false }))
+        }
+      >
+        <ChooseSource
+          onClick={() => ({})}
+          onClose={() =>
+            setIsBottomSheetOpen((prev) => ({ ...prev, chooseSource: false }))
+          }
+        />
       </BottomSheet>
     </div>
   );
