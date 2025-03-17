@@ -16,7 +16,7 @@ export function ProfileStats({
   onViewFollowers,
 }: ProfileStatsProps) {
   return (
-    <div className="flex flex-1 justify-between">
+    <div className="flex flex-1 gap-2">
       <StatCounter value={postCount} label="Collections" />
       <StatCounter
         onClick={onViewFollowers}

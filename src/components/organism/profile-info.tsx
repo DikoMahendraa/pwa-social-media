@@ -20,9 +20,9 @@ export function ProfileInfo({
 }: ProfileInfoProps) {
   const { isSubscribed } = useSubscriptionStore();
   return (
-    <div className="p-4">
-      <div className="flex mb-4">
-        <div className="mr-8">
+    <div className="py-2">
+      <div className="flex mb-4 px-3 items-center">
+        <div className="mr-6">
           <div className="relative w-[68px] h-[68px] rounded-full overflow-hidden">
             <ProfileAvatar
               src={profile.avatar}
@@ -40,7 +40,7 @@ export function ProfileInfo({
         />
       </div>
 
-      <div className="mb-4">
+      <div className="px-3">
         <ProfileBio
           name={profile.name}
           bio={profile.bio}
@@ -49,11 +49,13 @@ export function ProfileInfo({
         />
       </div>
 
-      <ProfileActions
-        isMe={isMe}
-        isSubscribed={isSubscribed}
-        onSubscribe={onSubscribe}
-      />
+      <div className="px-2 mt-4">
+        <ProfileActions
+          isMe={isMe}
+          isSubscribed={isSubscribed}
+          onSubscribe={onSubscribe}
+        />
+      </div>
     </div>
   );
 }

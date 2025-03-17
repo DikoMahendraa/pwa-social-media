@@ -28,7 +28,7 @@ export function ProfileActions({
     <div className="flex gap-2">
       <Button
         onClick={onSubscribe}
-        className="w-full flex gap-2 items-center justify-center border-black py-3.5 border-[1.5px] font-medium text-sm mt-4"
+        className="w-full flex gap-2 items-center justify-center border-black py-3.5 border-[1.5px] font-medium text-sm"
       >
         {isMe && <Pencil size={18} />}
         {buttonText}

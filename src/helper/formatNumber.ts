@@ -11,7 +11,7 @@ export function formatNumber(value: number = 0): string {
   }
 
   if (value >= 1000) {
-    return (value / 1000).toFixed(1).replace(/\.0$/, "") + "K";
+    return (value / 1000).toFixed(1).replace(/\.0$/, "") + "k";
   }
 
   return value.toString();

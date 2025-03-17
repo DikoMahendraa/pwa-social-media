@@ -31,7 +31,7 @@ export function TabNavigation({
 
   return (
     <div>
-      <div className="flex border-b border-b-[#e6e6e6] mb-4">
+      <div className="flex border-b border-b-[#e6e6e6]">
         {tabs.map((tab) => (
           <TabButton
             key={tab.id}

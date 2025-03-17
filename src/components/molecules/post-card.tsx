@@ -23,10 +23,10 @@ export function PostCard({ post, isMe }: PostCardProps) {
         />
       </div>
 
-      <div className="absolute top-2 right-2 left-2 gap-2 flex justify-between">
-        <div className="flex gap-2 items-center">
+      <div className="absolute top-1 right-1 left-1 flex justify-between">
+        <div className="flex gap-1 items-center">
           <Badge
-            className="py-1"
+            className="py-2"
             icon={
               <Image
                 alt="circle-three"
@@ -38,7 +38,7 @@ export function PostCard({ post, isMe }: PostCardProps) {
             label={post?.userTags?.length ?? 0}
           />
           <Badge
-            className="py-1"
+            className="py-2"
             icon={<CircleSmall className="fill-white" size={14} />}
             label={post?.userTags?.length ?? 0}
           />

@@ -1,22 +1,25 @@
 "use client";
 
-import type { LucideIcon } from "lucide-react";
 import Image from "next/image";
 
 interface BottomNavigationItemProps {
-  icon?: LucideIcon;
+  icon?: string;
   profileImage?: string;
   onClick?: () => void;
 }
 
 export function BottomNavigationItem({
-  icon: Icon,
+  icon,
   profileImage,
   onClick,
 }: BottomNavigationItemProps) {
   return (
     <button className="cursor-pointer" onClick={onClick}>
-      {Icon && <Icon size={24} />}
+      {icon && (
+        <div className="w-6 h-6 relative overflow-hidden">
+          <Image src={icon || "/placeholder.svg"} alt="Profile" fill />
+        </div>
+      )}
       {profileImage && (
         <div className="w-7 h-7 relative border rounded-full overflow-hidden">
           <Image
